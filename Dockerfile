@@ -7,7 +7,7 @@ FROM ubuntu:latest
 MAINTAINER massamba sow mass.sow@gmail.com
 
 # For SSH access and port redirection
-ENV ROOTPASSWORD "sample"
+ENV ROOTPASSWORD sample
 
 # Sanity check
 RUN echo ============================\> SSH OK
@@ -71,8 +71,7 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
-EXPOSE 22
-CMD ["/usr/sbin/sshd", "-D"]        
+EXPOSE 22       
 
 RUN echo ============================\> sshd launch OK
 
@@ -105,3 +104,4 @@ RUN echo ============================\> npm dependencies OK
 
 # Run when the container launches
 # CMD ["pwd"]
+CMD ["/usr/sbin/sshd", "-D"] 
